@@ -3,7 +3,6 @@
 - [About Accessibility](Accessibility.md)
 - [How to use the styleguide in your project?](HOWTO.md)
 
-
 ## Summary
 
 - [Installation](#installation)
@@ -21,7 +20,7 @@ The design specifications described for use on the Internet or in intranets can 
 
 ## Installation
 
-*Recommended:* Install with NPM ([more details](HOWTO.md)):
+_Recommended:_ Install with NPM ([more details](HOWTO.md)):
 
 ```
 $ npm install swiss-styleguide --save-dev
@@ -38,16 +37,13 @@ Use the provided build. Download the [latest release](https://github.com/swiss/s
 ### Frutiger
 
 The Confederation Web Guidelines should come with Frutiger as the main font. But due to [licence](src/assets/fonts/LICENSE) restrictions, the font files cannot be distributed on this repository.
-A copy can be obtained on the [federal chancellery intranet]( 
-https://intranet.bk.admin.ch/bk-intra/de/home/dl-koordination-bund/kommunikation/webforum-bund/Downloads.html) or directly requested per email: [webforum@bk.admin.ch](mailto:webforum@bk.admin.ch). The font files then have to be copied into the `src/assets/fonts` directory.
- 
-According to the Frutiger [licence](src/assets/fonts/LICENSE), the font files have to be protected. Each project should ensure that only allowed domains have access the font. The proposed solution is to check that the REFERER http header is present and contains the project's domain.
+A copy can be obtained on the [federal chancellery intranet](https://intranet.bk.admin.ch/bk-intra/de/home/dl-koordination-bund/kommunikation/webforum-bund/Downloads.html) or directly requested per email: [webforum@bk.admin.ch](mailto:webforum@bk.admin.ch). The font files then have to be copied into the `src/assets/fonts` directory.
 
+According to the Frutiger [licence](src/assets/fonts/LICENSE), the font files have to be protected. Each project should ensure that only allowed domains have access the font. The proposed solution is to check that the REFERER http header is present and contains the project's domain.
 
 ## Contribution
 
 If you want to contribute, fix a bug or suggest a new feature, please first [create a new issue](https://github.com/swiss/styleguide/issues/new), so we can discuss it. Then, please make a Pull Request to the `dev` branch. This is important, as we use the [Git Flow](https://github.com/swiss/styleguide/issues/new) workflow. We thank you in advance for your collaboration!
-
 
 ### Project setup on OSX/Unix/Windows
 
@@ -55,7 +51,11 @@ We use [Gulp.js](http://gulpjs.com) to run tasks and build our styleguide with [
 
 Install all the required dependencies, build the styleguide and start the server:
 
+> Note that this project was only buildable with node version 10.24.1.
+
 ```
+$ nvm install v10.24.1
+$ nvm use v10.24.1 # make sure you use the correct node version
 $ npm install && bower install
 $ npm start
 ```
@@ -67,13 +67,13 @@ $ npm start
 Run the default Gulp task:
 
 ```
-$ gulp
+$ npm run build
 ```
 
 Run Gulp during development process (with `watch` tasks and browser-sync):
 
 ```
-$ gulp serve
+$ npm start
 ```
 
 ## FAQ
@@ -84,7 +84,7 @@ The grid system works exactly the same way as [Bootstrap](http://getbootstrap.co
 
 ### Print classes
 
-You can add print specific classes by using the ones [Bootstrap](http://getbootstrap.com/css/#responsive-utilities-print) made. 
+You can add print specific classes by using the ones [Bootstrap](http://getbootstrap.com/css/#responsive-utilities-print) made.
 
 Classes available: `.visible-print-block`, `.visible-print-inline`, `.visible-print-inline-block`, `.hidden-print`.
 
@@ -92,7 +92,8 @@ Please refer to their documentation for more details.
 
 ## Known issues
 
-### `@font-face` + Cache-Control/Pragma: 
+### `@font-face` + Cache-Control/Pragma:
+
 There is a known issue with Internet Explorer when loading the page over HTTPS with Cache-Control or Pragma headers set. Disable cache control on fonts to fix it (refer to [issue #359](https://github.com/swiss/styleguide/issues/359) for more information):
 
 ```
